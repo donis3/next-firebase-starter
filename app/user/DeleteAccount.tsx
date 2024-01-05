@@ -1,6 +1,6 @@
 "use client";
-import { deleteAccountAction, logoutAction } from "@/app/auth/actions";
 import React, { useState } from "react";
+import { deleteUserAction } from "./actions";
 
 type DeleteAccountProps = {
 	children: React.ReactNode;
@@ -23,7 +23,7 @@ export default function DeleteAccount({
 	 */
 	async function handleDeleteAccount() {
 		try {
-			await deleteAccountAction();
+			await deleteUserAction();
 		} catch (error: any) {
 			//console.log(error?.message);
 		} finally {

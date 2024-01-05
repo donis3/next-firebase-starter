@@ -1,16 +1,17 @@
-import { isLoggedIn } from "@/lib/firebase-auth-api";
-import GoogleSignIn from "./GoogleSignIn";
 import { redirect } from "next/navigation";
+import { getAuthAction } from "../actions";
 import GithubSignIn from "./GithubSignIn";
+import GoogleSignIn from "./GoogleSignIn";
+import { UserRecord } from "firebase-admin/auth";
 
-type LoginProps = {
-	searchParams: {
-		cb?: string;
-	};
+type LoginPageProps = {
+	searchParams: { cb?: string };
 };
 
-export default async function Login({ searchParams }: LoginProps) {
-	if (await isLoggedIn(true)) {
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+	const user = (await getAuthAction(true)) as UserRecord | undefined;
+
+	if (user) {
 		//After login, redirect the user to the requested page by using ?cb=/path get variable
 		if (searchParams.cb)
 			return redirect(searchParams.cb + "?notify=login_success");

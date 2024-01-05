@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/app/_components/Navbar";
 import { Suspense } from "react";
 import Notifications from "@/app/_components/Notifications";
-import Refresh from "./_components/Refresh";
+import Navigation from "./_components/Navigation";
+import Loading from "./_components/Loading";
 
 export const metadata: Metadata = {
 	title: "Next & Firebase implementation by donis.dev",
@@ -19,14 +19,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="min-w-[300px]">
-				<Suspense fallback={"loading navbar"}>
-					<Navbar />
-				</Suspense>
+				<Navigation />
 				<main className="container mx-auto">
-					<Suspense fallback={"loading"}>{children}</Suspense>
+					<Suspense fallback={<Loading />}>{children}</Suspense>
 				</main>
 				<Notifications />
-				<Refresh />
 			</body>
 		</html>
 	);

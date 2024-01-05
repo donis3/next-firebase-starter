@@ -2,9 +2,9 @@
 import { auth } from "@/lib/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import { loginAction } from "../actions";
 import { redirect } from "next/navigation";
 import useAnalytics from "@/app/_hooks/useAnalytics";
+import { loginAction } from "../actions";
 
 export default function GoogleSignIn() {
 	const [loading, setLoading] = useState(false);

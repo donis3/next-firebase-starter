@@ -13,7 +13,7 @@ export default async function Home() {
 			</p>
 			<p className="py-2 leading-relaxed ">
 				Visit{" "}
-				<Link href="/dashboard" className="underline">
+				<Link href="/user" className="underline">
 					dashboard
 				</Link>{" "}
 				to see the login flow in action. This route is protected in the

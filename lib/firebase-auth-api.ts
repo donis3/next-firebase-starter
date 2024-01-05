@@ -6,7 +6,6 @@ import { cookies } from "next/headers";
 import appConfig from "./app.config";
 import { adminAuth } from "./firebase-admin";
 import { UserRecord } from "firebase-admin/auth";
-import { revalidatePath } from "next/cache";
 
 /**
  * Load the token from the session cookie and verify token is valid.
@@ -147,9 +146,11 @@ export async function deleteCurrentUser() {
 
 		//Delete user
 		await adminAuth.deleteUser(user.uid);
+		return true;
 	} catch (error: any) {
 		console.log("Delete user account failed: ", error?.code);
 	}
+	return undefined;
 }
 
 /* ---------------------------- Helper Functions ---------------------------- */

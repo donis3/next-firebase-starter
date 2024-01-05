@@ -30,6 +30,7 @@ export default async function Dashboard() {
 								src={user.photoURL}
 								alt="User image"
 								className="rounded-full w-auto"
+								referrerPolicy="no-referrer"
 							/>
 							<span className="font-medium">
 								{user.displayName}

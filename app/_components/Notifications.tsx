@@ -2,7 +2,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
 type Msg = {
 	/**
@@ -28,6 +28,12 @@ dict.set("logout_success", {
 	type: "success",
 	message: "You have successfully logged out!",
 	duration: 5,
+});
+
+dict.set("delete_user_success", {
+	type: "success",
+	message: "Your account has been deleted successfully!",
+	duration: 10,
 });
 
 dict.set("logout_error", {
@@ -62,6 +68,11 @@ export default function Notifications({}) {
 	const params = useSearchParams();
 	const [notification, setNotification] = useState<Msg | undefined>();
 
+	function handleRemoveNotification() {
+		setNotification(undefined);
+		router.replace(path, { scroll: false });
+	}
+
 	/**
 	 * Run whenever path / url params change and check for a notification
 	 * If there is a valid notification, display it  and remove it after duration
@@ -80,20 +91,35 @@ export default function Notifications({}) {
 		return () => clearTimeout(timer);
 	}, [path, params]);
 
+	const style: CSSProperties = {
+		background: notification?.type === "error" ? "red" : "green",
+	};
+
 	if (!notification) return <></>;
 
 	return (
-		<div className="px-4 py-2 flex flex-row gap-4 items-center justify-between border rounded-md absolute bottom-2 left-2 w-fit shadow-md bg-slate-100 max-w-[95vw] md:max-w-[80vw] opacity-90">
-			{notification.type === "error" && (
-				<span className="text-red-600 font-extrabold"> &#10005;</span>
-			)}
-			{notification.type === "success" && (
-				<span className="text-green-700 font-extrabold"> &#10003;</span>
-			)}
+		<div className="absolute z-10 top-12 w-full  flex justify-center">
+			<div
+				onClick={handleRemoveNotification}
+				style={style}
+				className=" cursor-pointer px-4 py-2 text-white flex flex-row gap-4 items-center justify-between border rounded-md w-fit shadow-lg  max-w-[95vw] md:max-w-[80vw] opacity-90">
+				{notification.type === "error" && (
+					<span className="text-red-600 font-extrabold bg-white px-2 rounded-full">
+						{" "}
+						&#10005;
+					</span>
+				)}
+				{notification.type === "success" && (
+					<span className="text-green-700 font-extrabold bg-white px-2 rounded-full ">
+						{" "}
+						&#10003;
+					</span>
+				)}
 
-			<span className="flex-1 font-medium text-base">
-				{notification.message}
-			</span>
+				<span className="flex-1 font-medium text-base">
+					{notification.message}
+				</span>
+			</div>
 		</div>
 	);
 }
