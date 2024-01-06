@@ -1,3 +1,17 @@
+/*	The navigation bar as a server component
+
+Navbar as a server component allows us to get the authenticated user object on server side and render accordingly.
+We wont have any loading.. state or weird flashes. 
+
+Downside is, importing this component at the root layout will cause the whole application to be dynamically rendered.
+Since the final state of the navbar is unknown at build time, it depends on the auth state. 
+
+If you want to statically render some routes, you need to make global components like this client components.
+For example, you can load the default navbar with user not authenticated state. 
+After load you can call a server action to fetch the current user if available.
+You can show a loading spinner during this process. Its up to the developer.
+*/
+
 import Link from "next/link";
 import NavigationLink from "./NavigationLink";
 import { getAuthAction } from "../user/actions";
