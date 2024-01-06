@@ -32,7 +32,11 @@ export default function GoogleSignIn() {
 			//If success, redirect to user profile
 			if (result) {
 				logLoginEvent("Google"); //Send event to google analytics
-				redirect("/user?notify=login_success");
+
+				//This will not take effect because of the redirect at /user/login page.
+				//When the revalidatePath runs, the user/login route will receive a user object and redirect to / home page
+				//this is redundant but keep it anyway
+				return redirect("/user?notify=login_success");
 			}
 		} catch (error: any) {
 			//Display desired errors if needed and reset loading states

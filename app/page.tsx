@@ -10,20 +10,34 @@ export default function Home() {
 				</h2>
 				<p className="py-2 leading-relaxed ">
 					In this project, a session based server side authentication
-					using firebase/auth is demonstrated.
-					<br />
-					Visit the{" "}
+					using firebase/auth is demonstrated. Visit the{" "}
 					<Link
 						href={"https://github.com/donis3/next-firebase-starter"}
-						target="_blank" className="underline font-medium">
+						target="_blank"
+						className="underline font-medium">
 						github repo
 					</Link>{" "}
-					or the blog post for details.
+					or the{" "}
+					<Link
+						href={"https://donis.dev/blog/post/next_firebase_auth"}
+						target="_blank"
+						className="underline font-medium">
+						blog post
+					</Link>{" "}
+					for details.
+				</p>
+				<p className="py-2 leading-relaxed ">
+					You may clone the repo and start your own project ready to
+					handle firebase auth.{" "}
+				</p>
+				<p className="bg-gray-100 whitespace-nowrap py-2 pl-4 pr-1 rounded-md text-sm font-medium text-gray-700">
+					&gt; git clone
+					https://github.com/donis3/next-firebase-starter.git
 				</p>
 			</section>
 
 			{/* Route Information */}
-			<section className="p-2 md:p-4 max-w-[80ch] mx-auto leading-tight">
+			<section className="p-2 md:p-4 max-w-[80ch] mx-auto leading-tight mt-10">
 				<h3 className="font-medium py-2 text-lg tracking-tighter">
 					&#128312; Route '/' (homepage){" "}
 					<span className="text-sm font-light">Unprotected</span>

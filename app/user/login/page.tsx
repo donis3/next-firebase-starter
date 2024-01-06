@@ -52,7 +52,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 				<h4 className="font-medium mt-4">
 					Google Sign In (user/login/GoogleSignIn.tsx)
 				</h4>
-				<CodeHighlighter >
+				<CodeHighlighter>
 					{`const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
 const { logLoginEvent } = useAnalytics();					
@@ -105,7 +105,7 @@ async function signInWithGoogle() {
 				<h4 className="font-medium mt-4">
 					LoginAction (user/actions.tsx)
 				</h4>
-				<CodeHighlighter >
+				<CodeHighlighter>
 					{`/**
  * Get the token from the client and save it as a firebase cookie. If login succeeds, revalidate the whole router
  */
@@ -127,7 +127,7 @@ export async function loginAction({ idToken }: loginActionProps) {
 				<h4 className="font-medium mt-4">
 					login (lib/firebase-auth-api.ts)
 				</h4>
-				<CodeHighlighter >
+				<CodeHighlighter>
 					{`/**
  * Sign a user in
  * @param token jwt token string from client side.

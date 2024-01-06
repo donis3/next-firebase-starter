@@ -7,6 +7,7 @@ import CodeHighlighter from "../_components/CodeHighlighter";
 export default async function UserPage() {
 	const user = (await getAuthAction()) as UserRecord | undefined;
 	if (!user) {
+		console.log("User not logged in");
 		return redirect("/user/login");
 	}
 
@@ -90,7 +91,7 @@ export default async function UserPage() {
 					<br />
 					<br />
 				</p>
-				<CodeHighlighter >
+				<CodeHighlighter>
 					{`//How to protect a route
 const user = (await getAuthAction()) as UserRecord | undefined;
 if (!user) {
@@ -99,7 +100,8 @@ if (!user) {
 				</CodeHighlighter>
 
 				<h3 className="font-medium py-2 text-lg tracking-tighter mt-10">
-					&#128312; Further Reading: Saving additional fields for a user
+					&#128312; Further Reading: Saving additional fields for a
+					user
 				</h3>
 				<p className="py-2 ">
 					As mentioned before, we can only get user information from
@@ -122,7 +124,7 @@ if (!user) {
 					new text in this users document. You can add any data to a
 					document this way.
 				</p>
-				<CodeHighlighter >
+				<CodeHighlighter>
 					{`
 
 /**
