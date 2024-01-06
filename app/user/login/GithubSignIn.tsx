@@ -55,10 +55,10 @@ export default function GithubSignIn() {
 				//We now send the jwt token to the server to create a session cookie
 				const result = await loginAction({ idToken: token });
 
-				//If success, redirect to dashboard
+				//If success, redirect to profile
 				if (result) {
 					logLoginEvent("Github"); //Send event to google analytics
-					redirect("/dashboard?notify=login_success");
+					redirect("/user?notify=login_success");
 				}
 			} catch (error: any) {
 				//Display desired errors if needed and reset loading states

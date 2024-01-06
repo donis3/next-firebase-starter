@@ -118,7 +118,7 @@ export async function login(token: string) {
 
 		//Create the cookie
 		cookies().set(appConfig.sessionCookieName, sessionCookie, {
-			maxAge: appConfig.sessionCookieDuration,
+			maxAge: appConfig.sessionCookieDuration / 1000, // In seconds?
 			httpOnly: true,
 			secure: true,
 		});
